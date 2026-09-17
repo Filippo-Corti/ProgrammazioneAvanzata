@@ -12,6 +12,6 @@ def pairs(a, b):
     return c
 
 def betterpairs(a, b):
-    
+    ...
 
 print(pairs(a, b))
