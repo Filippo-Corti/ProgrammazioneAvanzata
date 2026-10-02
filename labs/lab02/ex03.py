@@ -1,6 +1,6 @@
 import sys
 import math
-from itertools import islice
+from itertools import islice, cycle, count
 
 
 def evenfacts():
@@ -8,32 +8,18 @@ def evenfacts():
     a, x = 1, 2
     while True:
         yield a
-        a *= x
-        x += 1
-        a *= x
-        x += 1
+        a = (a * x) * (x + 1)
+        x += 2
 
 
-def signs():
-    """Generator of alternating 1 and -1"""
-    a = 1
-    while True:
-        yield a
-        a *= -1
-
-
-def evens():
-    """Generator of even numbers, from 1"""
-    a = 1
-    while True:
-        yield a
-        a += 2
+signs = lambda: cycle([1, -1])  # Generates 1, -1, 1, -1, ...
+odds = lambda: count(start=1, step=2)  # Generates 1, 3, 5, ...
 
 
 def sin_taylor_terms(x):
     """Generator of terms of the taylor's series for sin(x)"""
     calc = lambda fact, sign, exp: sign * x**exp / fact
-    for f, s, e in zip(evenfacts(), signs(), evens()):
+    for f, s, e in zip(evenfacts(), signs(), odds()):
         yield calc(f, s, e)
 
 
