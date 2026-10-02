@@ -3,8 +3,6 @@ import sys
 from operator import mul
 from functools import reduce
 
-sys.setrecursionlimit(10**8)
-
 
 def primegen():
     p = 1
@@ -32,6 +30,7 @@ def factorize(n):
         factors.append((n, 1))
 
     return factors
+
 
 def ispractical(n):
     factors = factorize(n)
