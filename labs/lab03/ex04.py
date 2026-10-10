@@ -7,7 +7,7 @@ class SortedDict(dict):
         super().__init__()
         self.__keys = []
 
-        class __Key:  # Alternatively to all of this, you can use sorted(iterable, key=functools.cmp_to_key(cmp)) exists.
+        class __Key:  # Alternatively to all of this, sorted(iterable, key=functools.cmp_to_key(cmp)) exists.
 
             def __init__(self, v):
                 self.__v = v
